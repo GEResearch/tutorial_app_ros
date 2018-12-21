@@ -1,0 +1,11 @@
+<launch>
+  <node name  = "talker_node1" 
+        pkg   = "appservices" 
+        type  = "talker" 
+        output= "screen" />
+
+  <!-- tests -->
+ <test test-name = "test_talker" 
+       pkg       = "appservices" 
+       type      = "test_talker"/>
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+ <!-- System we are testing --> 
+ <node name  = "translator_node1" pkg   = "translator"  type  = "translator" output= "screen" />
+ <node name  = "echo_node1"       pkg   = "appservices" type  = "echo"       output= "screen" />
+
+ <!-- Integration tests -->
+ <test test-name = "test_app" 
+       pkg       = "tutorialapp" 
+       type      = "test_app"/>
+</launch>

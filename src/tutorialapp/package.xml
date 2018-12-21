@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="1">
+  <name>tutorialapp</name>
+  <version>0.0.1</version>
+  <description>Integration tests for the tutorial app</description>
+
+  <license>TODO</license>
+
+  <maintainer email="developer@todo.todo">developer</maintainer>
+  <author email="author@todo.todo">author</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+  <test_depend>gtest</test_depend>
+  <build_depend>rostest</build_depend> 
+
+</package>

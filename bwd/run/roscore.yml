@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  rosmaster_service:
+    image:          example_registry/tutorialapp-${ARCH}:0.0.1
+    container_name: rosmaster
+    networks:
+      - tutorialappnet
+    environment:
+      - "ROS_HOSTNAME=rosmaster"
+    command: [/bin/bash, -c, "uname -a && stdbuf -o L roscore"]   #'stdbuf -o L' for io stream fix
+
+networks:
+  tutorialappnet:
+    external: true
+

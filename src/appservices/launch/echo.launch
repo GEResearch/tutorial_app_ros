@@ -1,0 +1,11 @@
+<launch>
+  <node name  = "echo_node1" 
+        pkg   = "appservices" 
+        type  = "echo" 
+        output= "screen" />
+
+  <!-- tests -->
+ <test test-name = "test_echo" 
+       pkg       = "appservices" 
+       type      = "test_echo"/>
+</launch>

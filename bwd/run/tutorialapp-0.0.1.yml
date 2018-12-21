@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  talker_service:
+    image:        example_registry/tutorialapp-${ARCH}:0.0.1
+    container_name: talker
+    networks:
+      - tutorialappnet
+    environment:
+      - "ROS_HOSTNAME=talker"
+      - "ROS_MASTER_URI=http://rosmaster:11311"
+    command: [/bin/bash, -c, "stdbuf -o L roslaunch appservices talker.launch"]
+
+  echo_service:
+    image:        example_registry/tutorialapp-${ARCH}:0.0.1
+    container_name: echo
+    networks:
+      - tutorialappnet
+    environment:
+      - "ROS_HOSTNAME=echo"
+      - "ROS_MASTER_URI=http://rosmaster:11311"
+    command: [/bin/bash, -c, "stdbuf -o L roslaunch appservices echo.launch"]
+
+  translator_service:
+    image:        example_registry/tutorialapp-${ARCH}:0.0.1
+    container_name: translator
+    networks:
+      - tutorialappnet
+    environment:
+      - "ROS_HOSTNAME=translator"
+      - "ROS_MASTER_URI=http://rosmaster:11311"
+    command: [/bin/bash, -c, "stdbuf -o L roslaunch translator translator.launch"]
+
+networks:
+  tutorialappnet:
+    external: true

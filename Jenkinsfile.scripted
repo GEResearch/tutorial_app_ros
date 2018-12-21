@@ -1,0 +1,42 @@
+node {
+    stage "SCM Checkout"
+    deleteDir()
+    checkout scm
+    sh "git submodule update --init --recursive"
+
+    stage "Workspace Cleanup"
+    sh '''
+       make clean
+    '''
+
+    stage "Build Info"
+    sh '''
+       make info
+    '''
+
+    stage "Build Builder Image"
+    sh '''
+        make build-image
+    '''
+
+    stage "Compile"
+    sh '''
+        make build
+    '''
+
+    try {
+        stage ("Run Tests") {
+            sh '''
+                make test
+            '''
+        }
+    }
+    finally {
+        junit '**/*test*.xml'
+    }
+
+    stage "Workspace Cleanup"
+    sh '''
+       make clean
+    '''
+}

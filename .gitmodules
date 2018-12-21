@@ -1,0 +1,3 @@
+[submodule "bwd/src"]
+	path = bwd/src
+	url = git@github.com:GERobotics/build_with_docker.git
